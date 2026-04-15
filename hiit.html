@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIIT Area | Unique Fitness Bhubaneswar</title>
+    <meta name="description" content="Push your limits with High Intensity Interval Training at Unique Fitness Bhubaneswar. Battle ropes, plyo boxes, kettlebells & more.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    colors: {
+                        primary: '#dc2626',
+                        primaryDark: '#b91c1c',
+                        charcoal: '#111827',
+                        darker: '#030712',
+                        surface: '#1f2937',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-charcoal text-gray-200 font-sans antialiased overflow-x-hidden" x-data="{ mobileMenuOpen: false, modalOpen: false }">
+
+    <!-- Sticky Navigation -->
+    <header class="fixed w-full z-50 bg-darker/90 backdrop-blur-md border-b border-gray-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="text-2xl font-extrabold text-white uppercase tracking-wider flex items-center gap-2">
+                        <img src="logo.jpg" alt="Unique Fitness Logo" class="w-10 h-10 rounded-full border-2 border-primary object-cover bg-white">
+                        <span>Unique <span class="text-primary">Fitness</span></span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex space-x-8 items-center text-sm font-semibold tracking-wide">
+                    <a href="index.html#services" class="hover:text-primary transition-colors text-gray-300">Classes</a>
+                    <a href="index.html#gallery" class="hover:text-primary transition-colors text-gray-300">Facilities</a>
+                    <a href="index.html#contact" class="hover:text-primary transition-colors text-gray-300">Contact</a>
+                    <button @click="modalOpen = true" class="bg-primary hover:bg-primaryDark text-white px-6 py-2.5 rounded-full transition-transform transform hover:scale-105 shadow-[0_0_15px_rgba(220,38,38,0.4)]">Book Free Trial</button>
+                </nav>
+                <div class="flex md:hidden">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-300 hover:text-white p-2 min-h-[44px] min-w-[44px]">
+                        <i class="fa-solid fa-bars text-2xl" x-show="!mobileMenuOpen"></i>
+                        <i class="fa-solid fa-xmark text-2xl" x-show="mobileMenuOpen" x-cloak></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div x-show="mobileMenuOpen" x-transition.opacity class="md:hidden bg-darker border-b border-gray-800 absolute w-full" x-cloak>
+            <div class="px-4 pt-2 pb-6 space-y-2 text-center">
+                <a href="index.html#services" @click="mobileMenuOpen = false" class="block py-3 text-lg font-medium text-gray-300 hover:text-primary">Classes</a>
+                <a href="index.html#gallery" @click="mobileMenuOpen = false" class="block py-3 text-lg font-medium text-gray-300 hover:text-primary">Facilities</a>
+                <a href="index.html#contact" @click="mobileMenuOpen = false" class="block py-3 text-lg font-medium text-gray-300 hover:text-primary">Contact</a>
+                <button @click="modalOpen = true; mobileMenuOpen = false" class="w-full mt-4 bg-primary text-white py-3 rounded-xl font-bold min-h-[44px]">Book Free Trial</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="relative min-h-[65vh] flex items-center justify-center pt-20" style="background-image: linear-gradient(rgba(3,7,18,0.75), rgba(3,7,18,0.92)), url('https://images.unsplash.com/photo-1507398941214-572c25f4b1dc?q=80&w=1973&auto=format&fit=crop'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 bg-gradient-to-t from-darker via-transparent to-transparent"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+            <span class="inline-block py-1 px-4 rounded-full bg-primary/20 text-primary border border-primary/30 text-sm font-semibold mb-6 uppercase tracking-widest">Elite Program</span>
+            <i class="fa-solid fa-fire text-primary text-6xl mb-6 block"></i>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-6">HIIT <span class="text-primary">Area</span></h1>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto font-light mb-8">High Intensity Interval Training area equipped with battle ropes, plyo boxes, and kettlebells to push your limits.</p>
+            <button @click="modalOpen = true" class="px-8 py-4 bg-primary hover:bg-primaryDark text-white rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-[0_0_25px_rgba(220,38,38,0.5)]">
+                Claim Free Trial <i class="fa-solid fa-arrow-right ml-2"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="py-24 bg-darker">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl font-extrabold text-white mb-6">Maximum Results in <span class="text-primary">Minimum Time</span></h2>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-6">HIIT (High Intensity Interval Training) is scientifically proven to be one of the most effective forms of exercise for fat loss and cardiovascular conditioning. Our dedicated HIIT zone gives you the space and tools to go all out.</p>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-8">Short, explosive intervals followed by brief rest periods keeps your heart rate elevated and your metabolism firing long after the workout ends — the famous "afterburn effect." Just 30 minutes of HIIT can outperform an hour of steady-state cardio.</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-primary text-xl"></i><span class="text-gray-200 font-medium text-lg">Battle Ropes & Kettlebells</span></li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-primary text-xl"></i><span class="text-gray-200 font-medium text-lg">Plyometric Boxes</span></li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-primary text-xl"></i><span class="text-gray-200 font-medium text-lg">Open Turf for Sprints & Drills</span></li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-primary text-xl"></i><span class="text-gray-200 font-medium text-lg">Assault & Air Bikes</span></li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-primary text-xl"></i><span class="text-gray-200 font-medium text-lg">Coached HIIT Group Sessions</span></li>
+                    </ul>
+                </div>
+                <div class="rounded-3xl overflow-hidden shadow-2xl border border-gray-700 aspect-[4/3]">
+                    <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?q=80&w=2070&auto=format&fit=crop" alt="HIIT at Unique Fitness" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why HIIT -->
+    <section class="py-20 bg-charcoal border-t border-gray-800">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-extrabold text-white mb-4">Why <span class="text-primary">HIIT?</span></h2>
+            <p class="text-gray-400 mb-14">The science backs it up. Here's why thousands choose HIIT for maximum results.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-surface rounded-2xl p-8 border border-gray-700">
+                    <i class="fa-solid fa-fire-flame-curved text-primary text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-2">Burns More Fat</h3>
+                    <p class="text-gray-400 text-sm">HIIT keeps your metabolism elevated for up to 24 hours after your workout — burning more calories even at rest.</p>
+                </div>
+                <div class="bg-surface rounded-2xl p-8 border border-gray-700">
+                    <i class="fa-solid fa-clock text-primary text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-2">Time Efficient</h3>
+                    <p class="text-gray-400 text-sm">Get an effective, complete workout in 20–30 minutes. Ideal for busy professionals who want maximum results.</p>
+                </div>
+                <div class="bg-surface rounded-2xl p-8 border border-gray-700">
+                    <i class="fa-solid fa-heart text-primary text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-2">Improves Fitness Fast</h3>
+                    <p class="text-gray-400 text-sm">Regular HIIT training dramatically improves VO2 max, heart health, and endurance in as little as 2–3 weeks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule -->
+    <section class="py-20 bg-darker border-t border-gray-800">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-extrabold text-white mb-4">Session <span class="text-primary">Schedule</span></h2>
+            <p class="text-gray-400 mb-12">The HIIT area is open-access all day. Coached group sessions are available at selected times.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-surface rounded-2xl p-8 border border-gray-700">
+                    <i class="fa-solid fa-sun text-primary text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-2">Mon – Sat</h3>
+                    <p class="text-gray-400">Open: 5:30 AM – 11:30 AM</p>
+                    <p class="text-gray-400">Open: 4:30 PM – 9:30 PM</p>
+                    <p class="text-primary font-semibold mt-2">Coached Session: 6:00 PM – 7:00 PM</p>
+                </div>
+                <div class="bg-surface rounded-2xl p-8 border border-gray-700">
+                    <i class="fa-solid fa-moon text-primary text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-2">Sunday</h3>
+                    <p class="text-gray-400">Open: 6:00 AM – 10:00 AM</p>
+                    <p class="text-primary font-semibold mt-2">Coached Session: 7:00 AM – 8:00 AM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-charcoal border-t border-gray-800">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-extrabold text-white mb-4">Ready to <span class="text-primary">Push Your Limits?</span></h2>
+            <p class="text-gray-400 text-lg mb-8">Claim your 1-Day Free Pass and try our HIIT area with zero commitment.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button @click="modalOpen = true" class="px-8 py-4 bg-primary hover:bg-primaryDark text-white rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-[0_0_25px_rgba(220,38,38,0.5)]">
+                    Claim Free Pass <i class="fa-solid fa-arrow-right ml-2"></i>
+                </button>
+                <a href="index.html" class="px-8 py-4 bg-surface hover:bg-gray-700 text-white rounded-full font-bold text-lg border border-gray-600 transition-colors">Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0b111a] border-t border-gray-800 pt-12 pb-24 md:pb-8">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+                <a href="index.html" class="text-xl font-extrabold text-white uppercase tracking-wider flex items-center gap-2 mb-4">
+                    <img src="logo.jpg" alt="Unique Fitness Logo" class="w-10 h-10 rounded-full border-2 border-primary object-cover bg-white">
+                    <span>Unique <span class="text-primary">Fitness</span></span>
+                </a>
+                <p class="text-gray-400 text-sm">Bhubaneswar's premier fitness destination.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Programs</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="weight-training.html" class="text-gray-400 hover:text-primary">Weight Training</a></li>
+                    <li><a href="cardio.html" class="text-gray-400 hover:text-primary">Cardio Intensive</a></li>
+                    <li><a href="yoga.html" class="text-gray-400 hover:text-primary">Yoga & Core</a></li>
+                    <li><a href="personal-training.html" class="text-gray-400 hover:text-primary">Personal Training</a></li>
+                    <li><a href="zumba.html" class="text-gray-400 hover:text-primary">Zumba Classes</a></li>
+                    <li><a href="hiit.html" class="text-primary font-semibold">HIIT Area</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Contact</h4>
+                <p class="text-gray-400 text-sm mb-2"><i class="fa-solid fa-phone text-primary mr-2"></i>+91 7894970287</p>
+                <p class="text-gray-400 text-sm"><i class="fa-solid fa-location-dot text-primary mr-2"></i>Near Doon International School, Sijua, Bhubaneswar</p>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 pt-6 text-center">
+            <p class="text-gray-500 text-sm">&copy; 2024 Unique Fitness Bhubaneswar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Nav -->
+    <div class="md:hidden fixed bottom-0 w-full bg-darker/95 backdrop-blur-lg border-t border-gray-800 z-50 flex justify-between items-center px-2 py-2 shadow-[0_-5px_20px_rgba(0,0,0,0.5)]">
+        <a href="tel:+917894970287" class="flex-1 flex flex-col items-center justify-center text-gray-400 hover:text-white py-2 min-h-[44px]">
+            <i class="fa-solid fa-phone text-xl mb-1"></i>
+            <span class="text-[10px] uppercase font-bold tracking-wider">Call Now</span>
+        </a>
+        <button @click="modalOpen = true" class="flex-1 flex flex-col items-center justify-center text-primary py-2 min-h-[44px]">
+            <i class="fa-solid fa-fire text-xl mb-1"></i>
+            <span class="text-[10px] uppercase font-bold tracking-wider text-gray-300">Free Trial</span>
+        </button>
+        <a href="index.html" class="flex-1 flex flex-col items-center justify-center text-gray-400 hover:text-white py-2 min-h-[44px]">
+            <i class="fa-solid fa-house text-xl mb-1"></i>
+            <span class="text-[10px] uppercase font-bold tracking-wider">Home</span>
+        </a>
+    </div>
+
+    <!-- Booking Modal -->
+    <div x-show="modalOpen" class="fixed inset-0 z-[100] flex items-center justify-center min-h-screen px-4" x-cloak>
+        <div x-show="modalOpen" x-transition.opacity @click="modalOpen = false" class="fixed inset-0 bg-black/80 backdrop-blur-sm"></div>
+        <div x-show="modalOpen" x-transition.scale.duration.300ms class="bg-surface border border-gray-700 w-full max-w-lg rounded-3xl p-8 relative z-10 shadow-2xl">
+            <button @click="modalOpen = false" class="absolute top-4 right-4 text-gray-400 hover:text-white min-h-[44px] min-w-[44px]"><i class="fa-solid fa-xmark text-2xl"></i></button>
+            <h3 class="text-2xl font-extrabold text-white mb-2">Claim Free Pass</h3>
+            <p class="text-gray-400 text-sm mb-6">Enter your details and our trainer will contact you shortly.</p>
+            <form class="space-y-4" @submit.prevent="modalOpen = false; alert('Thank you! Our trainer will contact you shortly.')">
+                <input type="text" required class="w-full bg-darker border border-gray-700 rounded-xl px-4 py-3 text-white min-h-[44px] outline-none focus:border-primary" placeholder="Full Name">
+                <input type="tel" required class="w-full bg-darker border border-gray-700 rounded-xl px-4 py-3 text-white min-h-[44px] outline-none focus:border-primary" placeholder="Phone Number">
+                <button type="submit" class="w-full bg-primary hover:bg-primaryDark text-white py-3 rounded-xl font-bold min-h-[44px]">Get Pass via WhatsApp</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

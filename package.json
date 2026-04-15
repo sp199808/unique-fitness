@@ -1,0 +1,13 @@
+{
+  "name": "unique-fitness-tests",
+  "version": "1.0.0",
+  "description": "Playwright deployment tests for Unique Fitness template",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^20.11.24"
+  }
+}

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unique Fitness Bhubaneswar | Top Gym & Fitness Center</title>
+    <meta name="description"
+        content="Transform Your Life at Bhubaneswar's Premier Fitness Destination. Join Unique Fitness today for a 1-Day Free Pass. Weight Training, Cardio, Zumba, Yoga & more.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#dc2626', // Red-600
+                        primaryDark: '#b91c1c', // Red-700
+                        charcoal: '#111827', // Gray-900
+                        darker: '#030712', // Gray-950
+                        surface: '#1f2937', // Gray-800
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-pattern {
+            background-image: linear-gradient(rgba(3, 7, 18, 0.8), rgba(3, 7, 18, 0.9)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hide-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scroll {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+    </style>
+</head>
+
+<body class="bg-charcoal text-gray-200 font-sans antialiased overflow-x-hidden"
+    x-data="{ mobileMenuOpen: false, modalOpen: false, activeImage: 0 }">
+
+    <!-- Sticky Navigation -->
+    <header
+        class="fixed w-full z-50 bg-darker/90 backdrop-blur-md border-b border-gray-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#"
+                        class="text-2xl font-extrabold text-white uppercase tracking-wider flex items-center gap-2">
+                        <img src="logo.jpg" alt="Unique Fitness Logo"
+                            class="w-10 h-10 rounded-full border-2 border-primary object-cover bg-white">
+                        <span>Unique <span class="text-primary">Fitness</span></span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8 items-center text-sm font-semibold tracking-wide">
+                    <a href="#services" class="hover:text-primary transition-colors text-gray-300">Classes</a>
+                    <a href="#gallery" class="hover:text-primary transition-colors text-gray-300">Facilities</a>
+                    <a href="#testimonials" class="hover:text-primary transition-colors text-gray-300">Reviews</a>
+                    <button @click="modalOpen = true"
+                        class="bg-primary hover:bg-primaryDark text-white px-6 py-2.5 rounded-full transition-transform transform hover:scale-105 shadow-[0_0_15px_rgba(249,115,22,0.4)]">
+                        Book Free Trial
+                    </button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex md:hidden items-center">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen"
+                        class="text-gray-300 hover:text-white p-2 min-h-[44px] min-w-[44px]">
+                        <i class="fa-solid fa-bars text-2xl" x-show="!mobileMenuOpen"></i>
+                        <i class="fa-solid fa-xmark text-2xl" x-show="mobileMenuOpen" x-cloak></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div x-show="mobileMenuOpen" x-transition.opacity
+            class="md:hidden bg-darker border-b border-gray-800 absolute w-full" x-cloak>
+            <div class="px-4 pt-2 pb-6 space-y-2 text-center">
+                <a href="#services" @click="mobileMenuOpen = false"
+                    class="block py-3 text-lg font-medium text-gray-300 hover:text-primary">Classes</a>
+                <a href="#gallery" @click="mobileMenuOpen = false"
+                    class="block py-3 text-lg font-medium text-gray-300 hover:text-primary">Facilities</a>
+                <a href="#testimonials" @click="mobileMenuOpen = false"
+                    class="block py-3 text-lg font-medium text-gray-300 hover:text-primary">Reviews</a>
+                <button @click="modalOpen = true; mobileMenuOpen = false"
+                    class="w-full mt-4 bg-primary text-white py-3 rounded-xl font-bold min-h-[44px]">Book Free
+                    Trial</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-pattern min-h-screen flex items-center justify-center pt-20 relative">
+        <div class="absolute inset-0 bg-gradient-to-t from-darker via-transparent to-transparent"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 text-center">
+            <span
+                class="inline-block py-1 px-3 rounded-full bg-primary/20 text-primary border border-primary/30 text-sm font-semibold mb-6 uppercase tracking-widest backdrop-blur-sm animate-pulse">
+                Bhubaneswar's #1 Gym
+            </span>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-6">
+                Transform Your Life At <br class="hidden md:block" />
+                <span class="text-primary">Unique Fitness</span>
+            </h1>
+            <p class="mt-4 text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10 font-light">
+                State-of-the-art equipment, elite trainers, and an electrifying atmosphere dedicated to your goals.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button @click="modalOpen = true"
+                    class="w-full sm:w-auto px-8 py-4 bg-primary hover:bg-primaryDark text-white rounded-full font-bold text-lg transition-all transform hover:scale-105 hover:shadow-[0_0_25px_rgba(249,115,22,0.6)] min-h-[44px]">
+                    Claim 1-Day Free Pass <i class="fa-solid fa-arrow-right ml-2"></i>
+                </button>
+                <a href="#services"
+                    class="w-full sm:w-auto px-8 py-4 bg-surface hover:bg-gray-700 text-white rounded-full font-bold text-lg transition-all min-h-[44px] border border-gray-600">
+                    View Programs
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
+            <a href="#social-proof" class="text-white/50 hover:text-white">
+                <i class="fa-solid fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Social Proof Bar -->
+    <section id="social-proof" class="bg-primary/10 border-y border-primary/20 py-6">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
+            <div class="flex items-center gap-3">
+                <div class="flex text-yellow-400 text-xl">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                        class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <span class="text-white font-bold text-lg">4.9/5 on Google Maps</span>
+            </div>
+            <div class="hidden md:block h-8 w-px bg-gray-700"></div>
+            <div class="flex items-center gap-8 text-gray-400 text-sm font-semibold uppercase tracking-widest">
+                <span>Certified Trainers</span>
+                <span class="hidden sm:inline">Premium Setup</span>
+                <span>24/7 Access</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-darker">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Elite Classes & <span
+                        class="text-primary">Programs</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-lg">Whatever your fitness goal, we have the perfect
+                    program designed exclusively for you.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <a href="weight-training.html"
+                    class="group bg-surface rounded-2xl overflow-hidden border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 block">
+                    <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=2070&auto=format&fit=crop"
+                        alt="Weight Training"
+                        class="w-full h-56 object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                    <div class="p-6 text-center">
+                        <i class="fa-solid fa-dumbbell text-4xl text-primary mb-4"></i>
+                        <h3 class="text-2xl font-bold text-white mb-2">Weight Training</h3>
+                        <p class="text-gray-400 text-sm mb-4">Build muscle and strength with our top-tier free weights
+                            and isolated machines.</p>
+                        <span
+                            class="text-primary font-bold group-hover:text-white transition-colors uppercase tracking-wider text-sm inline-flex items-center min-h-[44px]">Explore
+                            <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    </div>
+                </a>
+                <!-- Card 2 -->
+                <a href="cardio.html"
+                    class="group bg-surface rounded-2xl overflow-hidden border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 block">
+                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=2070&auto=format&fit=crop"
+                        alt="Cardio & Crossfit"
+                        class="w-full h-56 object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                    <div class="p-6 text-center">
+                        <i class="fa-solid fa-heart-pulse text-4xl text-primary mb-4"></i>
+                        <h3 class="text-2xl font-bold text-white mb-2">Cardio Intensive</h3>
+                        <p class="text-gray-400 text-sm mb-4">Treadmills, cross-trainers, and step machines to get your
+                            heart rate up.</p>
+                        <span
+                            class="text-primary font-bold group-hover:text-white transition-colors uppercase tracking-wider text-sm inline-flex items-center min-h-[44px]">Explore
+                            <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    </div>
+                </a>
+                <!-- Card 3 -->
+                <a href="yoga.html"
+                    class="group bg-surface rounded-2xl overflow-hidden border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 block">
+                    <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?q=80&w=2070&auto=format&fit=crop"
+                        alt="Yoga & Wellness"
+                        class="w-full h-56 object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                    <div class="p-6 text-center">
+                        <i class="fa-solid fa-spa text-4xl text-primary mb-4"></i>
+                        <h3 class="text-2xl font-bold text-white mb-2">Yoga & Core</h3>
+                        <p class="text-gray-400 text-sm mb-4">Find your balance and strengthen your core with our
+                            expert-led yoga sessions.</p>
+                        <span
+                            class="text-primary font-bold group-hover:text-white transition-colors uppercase tracking-wider text-sm inline-flex items-center min-h-[44px]">Explore
+                            <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    </div>
+                </a>
+                <!-- Card 4 -->
+                <a href="personal-training.html"
+                    class="group bg-surface rounded-2xl overflow-hidden border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 block">
+                    <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?q=80&w=1974&auto=format&fit=crop"
+                        alt="Personal Training"
+                        class="w-full h-56 object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                    <div class="p-6 text-center">
+                        <i class="fa-solid fa-people-arrows text-4xl text-primary mb-4"></i>
+                        <h3 class="text-2xl font-bold text-white mb-2">Personal Trainers</h3>
+                        <p class="text-gray-400 text-sm mb-4">1-on-1 coaching for tailored diet plans and intensive
+                            supervised workouts.</p>
+                        <span
+                            class="text-primary font-bold group-hover:text-white transition-colors uppercase tracking-wider text-sm inline-flex items-center min-h-[44px]">Explore
+                            <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    </div>
+                </a>
+                <!-- Card 5 -->
+                <a href="zumba.html"
+                    class="group bg-surface rounded-2xl overflow-hidden border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hidden lg:block">
+                    <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?q=80&w=2070&auto=format&fit=crop"
+                        alt="Zumba"
+                        class="w-full h-56 object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                    <div class="p-6 text-center">
+                        <i class="fa-solid fa-music text-4xl text-primary mb-4"></i>
+                        <h3 class="text-2xl font-bold text-white mb-2">Zumba classes</h3>
+                        <p class="text-gray-400 text-sm mb-4">Burn calories and have fun with our high-energy weekend
+                            Zumba classes.</p>
+                        <span
+                            class="text-primary font-bold group-hover:text-white transition-colors uppercase tracking-wider text-sm inline-flex items-center min-h-[44px]">Explore
+                            <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    </div>
+                </a>
+                <!-- Card 6 -->
+                <a href="hiit.html"
+                    class="group bg-surface rounded-2xl overflow-hidden border border-gray-700 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hidden lg:block">
+                    <img src="https://images.unsplash.com/photo-1507398941214-572c25f4b1dc?q=80&w=1973&auto=format&fit=crop"
+                        alt="Crossfit"
+                        class="w-full h-56 object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                    <div class="p-6 text-center">
+                        <i class="fa-solid fa-fire text-4xl text-primary mb-4"></i>
+                        <h3 class="text-2xl font-bold text-white mb-2">HIIT Area</h3>
+                        <p class="text-gray-400 text-sm mb-4">High Intensity Interval Training area equipped with ropes,
+                            boxes, and kettlebells.</p>
+                        <span
+                            class="text-primary font-bold group-hover:text-white transition-colors uppercase tracking-wider text-sm inline-flex items-center min-h-[44px]">Explore
+                            <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Carousel Section (Mobile Optimized) -->
+    <section id="gallery" class="py-24 bg-charcoal overflow-hidden" x-data="{
+        images: [
+            'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=2070&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=2070&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=2070&auto=format&fit=crop'
+        ],
+        activeIndex: 0,
+        next() { this.activeIndex = (this.activeIndex + 1) % this.images.length },
+        prev() { this.activeIndex = (this.activeIndex - 1 + this.images.length) % this.images.length }
+    }">
+        <div class="max-w-7xl mx-auto px-4 mb-12 flex justify-between items-end">
+            <div>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Premium <span
+                        class="text-primary">Facilities</span></h2>
+                <p class="text-gray-400">Take a tour of our state-of-the-art gym environment.</p>
+            </div>
+            <div class="hidden md:flex gap-4">
+                <button @click="prev"
+                    class="bg-surface hover:bg-gray-700 text-white w-12 h-12 rounded-full flex items-center justify-center transition-colors"><i
+                        class="fa-solid fa-chevron-left"></i></button>
+                <button @click="next"
+                    class="bg-primary hover:bg-primaryDark text-white w-12 h-12 rounded-full flex items-center justify-center transition-colors"><i
+                        class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+
+        <!-- Swipeable Mobile Gallery -->
+        <div class="flex overflow-x-auto hide-scroll snap-x snap-mandatory gap-4 px-4 pb-8 md:hidden">
+            <template x-for="(img, index) in images">
+                <div class="min-w-[85vw] h-[60vh] rounded-3xl overflow-hidden snap-center relative">
+                    <img :src="img" class="w-full h-full object-cover" alt="Gym Facility">
+                    <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent"></div>
+                </div>
+            </template>
+        </div>
+
+        <!-- Desktop Gallery -->
+        <div class="hidden md:block max-w-7xl mx-auto px-4 relative h-[60vh] rounded-3xl overflow-hidden group">
+            <img :src="images[activeIndex]" class="w-full h-full object-cover transition-all duration-500"
+                alt="Gym Facility">
+            <div class="absolute inset-0 bg-gradient-to-t from-darker/80 to-transparent flex items-end p-12">
+                <div>
+                    <h3 class="text-3xl font-bold text-white mb-2">Unmatched Ambiance</h3>
+                    <p class="text-gray-300">Clean, spacious, and packed with the latest equipment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Capture Form Area -->
+    <section id="contact" class="py-24 bg-gradient-to-b from-darker to-charcoal border-t border-gray-800">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-surface rounded-3xl p-8 md:p-12 shadow-2xl border border-gray-700 relative overflow-hidden">
+                <div
+                    class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none">
+                </div>
+
+                <div class="text-center mb-10 relative z-10">
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4">Start Your <span
+                            class="text-primary">Journey</span> Today</h2>
+                    <p class="text-gray-400">Fill out the form below to claim your 1-Day Free Pass and a complimentary
+                        fitness assessment.</p>
+                </div>
+
+                <form class="space-y-6 relative z-10"
+                    @submit.prevent="$event.target.reset(); alert('Thank you! Our trainer will contact you shortly.')"
+                    id="lead-form">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-400 mb-2">Full Name</label>
+                            <input type="text" required id="name"
+                                class="w-full bg-darker border border-gray-700 focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-3 text-white placeholder-gray-500 outline-none transition-colors"
+                                placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-400 mb-2">Phone Number</label>
+                            <input type="tel" required id="phone"
+                                class="w-full bg-darker border border-gray-700 focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-3 text-white placeholder-gray-500 outline-none transition-colors"
+                                placeholder="+91 98765 43210">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Email Address</label>
+                        <input type="email" id="email"
+                            class="w-full bg-darker border border-gray-700 focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-3 text-white placeholder-gray-500 outline-none transition-colors"
+                            placeholder="johndoe@example.com">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Fitness Goal</label>
+                        <select id="goal"
+                            class="w-full bg-darker border border-gray-700 focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-3 text-white outline-none transition-colors appearance-none">
+                            <option>Weight Loss</option>
+                            <option>Muscle Building</option>
+                            <option>General Fitness</option>
+                            <option>Personal Training</option>
+                        </select>
+                    </div>
+                    <button type="submit" id="submit-btn"
+                        class="w-full bg-primary hover:bg-primaryDark text-white py-4 rounded-xl font-bold text-lg transition-transform transform hover:scale-[1.02] shadow-lg shadow-primary/30 min-h-[44px]">
+                        Claim Free Pass Now
+                    </button>
+                    <p class="text-xs text-center text-gray-500 mt-4">No credit card required. Promise we won't spam.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0b111a] border-t border-gray-800 pt-16 pb-24 md:pb-8">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-12">
+
+            <!-- Brand -->
+            <div class="md:col-span-4">
+                <a href="#"
+                    class="text-2xl font-extrabold text-white uppercase tracking-wider flex items-center gap-2 mb-6">
+                    <img src="logo.jpg" alt="Unique Fitness Logo"
+                        class="w-10 h-10 rounded-full border-2 border-primary object-cover bg-white">
+                    <span>Unique <span class="text-primary">Fitness</span></span>
+                </a>
+                <p class="text-gray-400 mb-6">Bhubaneswar's premier fitness destination offering top-notch equipment,
+                    elite trainers, and classes designed to transform your lifestyle.</p>
+                <div class="flex space-x-4">
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-surface flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary transition-colors min-h-[44px] min-w-[44px]">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-surface flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary transition-colors min-h-[44px] min-w-[44px]">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-full bg-surface flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary transition-colors min-h-[44px] min-w-[44px]">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Links -->
+            <div class="md:col-span-2">
+                <h4 class="text-white font-bold mb-6 text-lg">Quick Links</h4>
+                <ul class="space-y-4">
+                    <li><a href="#services"
+                            class="text-gray-400 hover:text-primary min-h-[44px] inline-flex items-center">Classes</a>
+                    </li>
+                    <li><a href="#gallery"
+                            class="text-gray-400 hover:text-primary min-h-[44px] inline-flex items-center">Facilities</a>
+                    </li>
+                    <li><a href="#"
+                            class="text-gray-400 hover:text-primary min-h-[44px] inline-flex items-center">Membership
+                            Plans</a></li>
+                    <li><a href="#"
+                            class="text-gray-400 hover:text-primary min-h-[44px] inline-flex items-center">Privacy
+                            Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact & Map -->
+            <div class="md:col-span-6">
+                <h4 class="text-white font-bold mb-6 text-lg">Visit Us</h4>
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="space-y-4 flex-1">
+                        <div class="flex items-start gap-4">
+                            <i class="fa-solid fa-location-dot text-primary mt-1"></i>
+                            <p class="text-gray-400">Unique Fitness, Near Doon International School Rd, Sijua,
+                                Patrapada,<br> Bhubaneswar, Odisha 751019</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-phone text-primary"></i>
+                            <p class="text-gray-400">+91 7894970287</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i class="fa-solid fa-clock text-primary"></i>
+                            <div>
+                                <p class="text-gray-400">Mon - Sat: 5:30 AM - 11:30 AM, 4:30 PM - 9:30 PM</p>
+                                <p class="text-gray-400">Sunday: 6:00 AM - 10:00 AM</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <!-- Google Maps Link -->
+                        <a href="https://maps.app.goo.gl/FLD39cJNZuxDxnJeA" target="_blank" class="w-full h-40 bg-gray-800 hover:bg-gray-700 rounded-xl overflow-hidden border border-gray-700 flex flex-col items-center justify-center text-gray-400 hover:text-white transition-colors relative group">
+                            <i class="fa-solid fa-map-location-dot text-4xl mb-2 group-hover:scale-110 transition-transform text-primary"></i>
+                            <span class="text-sm font-semibold mt-2">Open in Google Maps</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 text-center">
+            <p class="text-gray-500 text-sm">&copy; 2024 Unique Fitness Bhubaneswar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation (Sticky) -->
+    <div
+        class="md:hidden fixed bottom-0 w-full bg-darker/95 backdrop-blur-lg border-t border-gray-800 z-50 flex justify-between items-center px-2 py-2 pb-safe shadow-[0_-5px_20px_rgba(0,0,0,0.5)]">
+        <a href="tel:+919876543210"
+            class="flex-1 flex flex-col items-center justify-center text-gray-400 hover:text-white py-2 min-h-[44px]">
+            <i class="fa-solid fa-phone text-xl mb-1"></i>
+            <span class="text-[10px] uppercase font-bold tracking-wider">Call Now</span>
+        </a>
+        <a href="#"
+            class="flex-1 flex flex-col items-center justify-center text-green-500 hover:text-green-400 py-2 min-h-[44px]">
+            <i class="fa-brands fa-whatsapp text-2xl mb-1 drop-shadow-md"></i>
+            <span class="text-[10px] text-gray-300 uppercase font-bold tracking-wider">WhatsApp</span>
+        </a>
+        <a href="#"
+            class="flex-1 flex flex-col items-center justify-center text-gray-400 hover:text-white py-2 min-h-[44px]">
+            <i class="fa-solid fa-diamond-turn-right text-xl mb-1 text-blue-400"></i>
+            <span class="text-[10px] uppercase font-bold tracking-wider">Directions</span>
+        </a>
+    </div>
+
+    <!-- Booking Modal (AlpineJS driven) -->
+    <div x-show="modalOpen" class="fixed inset-0 z-[100] flex items-center justify-center min-h-screen px-4" x-cloak>
+        <div x-show="modalOpen" x-transition.opacity @click="modalOpen = false"
+            class="fixed inset-0 bg-black/80 backdrop-blur-sm"></div>
+        <div x-show="modalOpen" x-transition.scale.duration.300ms
+            class="bg-surface border border-gray-700 w-full max-w-lg rounded-3xl p-8 relative z-10 shadow-2xl">
+            <button @click="modalOpen = false"
+                class="absolute top-4 right-4 text-gray-400 hover:text-white min-h-[44px] min-w-[44px]"><i
+                    class="fa-solid fa-xmark text-2xl"></i></button>
+            <h3 class="text-2xl font-extrabold text-white mb-2">Claim Free Pass</h3>
+            <p class="text-gray-400 text-sm mb-6">Enter your details to generate your unique entry QR code.</p>
+            <form class="space-y-4" @submit.prevent="modalOpen = false; alert('Success!')">
+                <input type="text" required
+                    class="w-full bg-darker border border-gray-700 rounded-xl px-4 py-3 text-white min-h-[44px]"
+                    placeholder="Name">
+                <input type="tel" required
+                    class="w-full bg-darker border border-gray-700 rounded-xl px-4 py-3 text-white min-h-[44px]"
+                    placeholder="Phone">
+                <button type="submit"
+                    class="w-full bg-primary hover:bg-primaryDark text-white py-3 rounded-xl font-bold min-h-[44px]">Get
+                    Pass via WhatsApp</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

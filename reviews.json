@@ -1,0 +1,37 @@
+[
+    {
+        "name": "ram",
+        "program": "Zumba",
+        "rating": 5,
+        "text": "Good",
+        "initial": "R"
+    },
+    {
+        "name": "Rahul S.",
+        "program": "Weight Training",
+        "rating": 5,
+        "text": "Unique Fitness has completely transformed my lifestyle. The trainers are incredibly knowledgeable and the equipment is top-notch. Highly recommended!",
+        "initial": "R"
+    },
+    {
+        "name": "Priya M.",
+        "program": "Zumba Enthusiast",
+        "rating": 5,
+        "text": "The Zumba classes here are so energetic and fun! It never feels like a workout. The gym is very clean and the staff is extremely friendly.",
+        "initial": "P"
+    },
+    {
+        "name": "Amit K.",
+        "program": "Personal Training",
+        "rating": 4,
+        "text": "I joined for personal training and the results are amazing. My trainer crafted a perfect diet and workout plan. Great atmosphere overall.",
+        "initial": "A"
+    },
+    {
+        "name": "Sneha R.",
+        "program": "Yoga & Core",
+        "rating": 5,
+        "text": "The ambiance is fantastic and the yoga instructors really pay attention to form. Definitely the best gym in Bhubaneswar!",
+        "initial": "S"
+    }
+]

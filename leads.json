@@ -1,0 +1,24 @@
+[
+    {
+        "name": "Raj",
+        "phone": "7790000421",
+        "source": "booking_modal"
+    },
+    {
+        "name": "Subrat Panda",
+        "phone": "+917008030349",
+        "email": "psubrat1998@gmail.com",
+        "goal": "General Fitness",
+        "source": "lead_capture"
+    },
+    {
+        "name": "rahul",
+        "phone": "7790000422",
+        "source": "booking_modal"
+    },
+    {
+        "name": "rahul",
+        "phone": "7790000423",
+        "source": "booking_modal"
+    }
+]

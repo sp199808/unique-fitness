@@ -51,7 +51,7 @@
 </head>
 
 <body class="bg-charcoal text-gray-200 font-sans antialiased overflow-x-hidden"
-    x-data="{ mobileMenuOpen: false, modalOpen: false, activeImage: 0 }">
+    x-data="{ mobileMenuOpen: false, modalOpen: false, activeImage: 0, qrModalOpen: false, qrUrl: '' }">
 
     <!-- Sticky Navigation -->
     <header
@@ -439,7 +439,7 @@
                 </div>
 
                 <form class="space-y-6 relative z-10"
-                    @submit.prevent="$event.target.reset(); alert('Thank you! Our trainer will contact you shortly.')"
+                    @submit.prevent="fetch('/api/leads', { method: 'POST', body: JSON.stringify({ name: $event.target.name.value, phone: $event.target.phone.value, email: $event.target.email.value, goal: $event.target.goal.value, source: 'lead_capture' }) }).then(res => res.json()).then(data => { if(data.status === 'error') { alert(data.message); } else { qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=' + encodeURIComponent('PASS FOR: ' + $event.target.name.value + '\nPHONE: ' + $event.target.phone.value + '\nGOAL: ' + $event.target.goal.value); $event.target.reset(); qrModalOpen = true; } })"
                     id="lead-form">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
@@ -600,7 +600,7 @@
                     class="fa-solid fa-xmark text-2xl"></i></button>
             <h3 class="text-2xl font-extrabold text-white mb-2">Claim Free Pass</h3>
             <p class="text-gray-400 text-sm mb-6">Enter your details to generate your unique entry QR code.</p>
-            <form class="space-y-4" @submit.prevent="modalOpen = false; alert('Success!')">
+            <form class="space-y-4" @submit.prevent="fetch('/api/leads', { method: 'POST', body: JSON.stringify({ name: $event.target[0].value, phone: $event.target[1].value, source: 'booking_modal' }) }).then(res => res.json()).then(data => { if(data.status === 'error') { alert(data.message); } else { qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=' + encodeURIComponent('PASS FOR: ' + $event.target[0].value + '\nPHONE: ' + $event.target[1].value); modalOpen = false; qrModalOpen = true; } })">
                 <input type="text" required
                     class="w-full bg-darker border border-gray-700 rounded-xl px-4 py-3 text-white min-h-[44px]"
                     placeholder="Name">
@@ -608,52 +608,58 @@
                     class="w-full bg-darker border border-gray-700 rounded-xl px-4 py-3 text-white min-h-[44px]"
                     placeholder="Phone">
                 <button type="submit"
-                    class="w-full bg-primary hover:bg-primaryDark text-white py-3 rounded-xl font-bold min-h-[44px]">Get
-                    Pass via WhatsApp</button>
+                    class="w-full bg-primary hover:bg-primaryDark text-white py-3 rounded-xl font-bold min-h-[44px]">Claim Free Pass Now</button>
             </form>
+        </div>
+    </div>
+
+    <!-- QR Pass Modal -->
+    <div x-show="qrModalOpen" class="fixed inset-0 z-[100] flex items-center justify-center min-h-screen px-4" x-cloak>
+        <div x-show="qrModalOpen" x-transition.opacity @click="qrModalOpen = false; qrUrl = ''"
+            class="fixed inset-0 bg-black/80 backdrop-blur-sm"></div>
+        <div x-show="qrModalOpen" x-transition.scale.duration.300ms
+            class="bg-surface border border-gray-700 w-full max-w-sm rounded-3xl p-8 relative z-10 shadow-2xl text-center">
+            <button @click="qrModalOpen = false; qrUrl = ''"
+                class="absolute top-4 right-4 text-gray-400 hover:text-white min-h-[44px] min-w-[44px]">
+                <i class="fa-solid fa-xmark text-2xl"></i>
+            </button>
+            <h3 class="text-2xl font-extrabold text-white mb-2">1-Day Free Pass</h3>
+            <p class="text-gray-400 text-sm mb-6">Take a screenshot of this QR Code and present it to our receptionist upon arrival!</p>
+            <div class="bg-white p-4 rounded-xl inline-block mx-auto mb-6 shadow-[0_0_20px_rgba(249,115,22,0.3)]">
+                <img :src="qrUrl" alt="Your Free Pass QR Code" class="w-48 h-48 mx-auto">
+            </div>
+            <button @click="qrModalOpen = false; qrUrl = ''"
+                class="w-full bg-primary hover:bg-primaryDark text-white py-3 rounded-xl font-bold min-h-[44px] transition-transform transform hover:scale-[1.02]">
+                I've taken a screenshot!
+            </button>
         </div>
     </div>
 
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.store('reviews', {
-                list: [
-                    {
-                        name: 'Rahul S.',
-                        program: 'Weight Training',
-                        rating: 5,
-                        text: 'Unique Fitness has completely transformed my lifestyle. The trainers are incredibly knowledgeable and the equipment is top-notch. Highly recommended!',
-                        initial: 'R'
-                    },
-                    {
-                        name: 'Priya M.',
-                        program: 'Zumba Enthusiast',
-                        rating: 5,
-                        text: 'The Zumba classes here are so energetic and fun! It never feels like a workout. The gym is very clean and the staff is extremely friendly.',
-                        initial: 'P'
-                    },
-                    {
-                        name: 'Amit K.',
-                        program: 'Personal Training',
-                        rating: 4,
-                        text: 'I joined for personal training and the results are amazing. My trainer crafted a perfect diet and workout plan. Great atmosphere overall.',
-                        initial: 'A'
-                    },
-                    {
-                        name: 'Sneha R.',
-                        program: 'Yoga & Core',
-                        rating: 5,
-                        text: 'The ambiance is fantastic and the yoga instructors really pay attention to form. Definitely the best gym in Bhubaneswar!',
-                        initial: 'S'
-                    }
-                ],
+                list: [],
+                init() {
+                    fetch('/api/reviews')
+                        .then(res => res.json())
+                        .then(data => {
+                            this.list = data;
+                        })
+                        .catch(err => console.error('Error fetching reviews:', err));
+                },
                 get average() {
                     if (this.list.length === 0) return 0;
                     let sum = this.list.reduce((acc, review) => acc + review.rating, 0);
                     return (sum / this.list.length).toFixed(1);
                 },
                 addReview(review) {
-                    this.list.unshift(review);
+                    fetch('/api/reviews', {
+                        method: 'POST',
+                        body: JSON.stringify(review),
+                        headers: { 'Content-Type': 'application/json' }
+                    }).then(() => {
+                        this.list.unshift(review);
+                    }).catch(err => console.error('Error submitting review:', err));
                 }
             });
         });

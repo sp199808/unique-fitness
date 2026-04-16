@@ -143,14 +143,15 @@
     </section>
 
     <!-- Social Proof Bar -->
-    <section id="social-proof" class="bg-primary/10 border-y border-primary/20 py-6">
+    <section id="social-proof" class="bg-primary/10 border-y border-primary/20 py-6" x-data>
         <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
             <div class="flex items-center gap-3">
                 <div class="flex text-yellow-400 text-xl">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                        class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                    <template x-for="i in 5">
+                        <i class="fa-solid" :class="i <= Math.floor($store.reviews.average) ? 'fa-star text-yellow-400' : (i - 0.5 <= $store.reviews.average ? 'fa-star-half-stroke text-yellow-400' : 'fa-star text-gray-600')"></i>
+                    </template>
                 </div>
-                <span class="text-white font-bold text-lg">4.9/5 on Google Maps</span>
+                <span class="text-white font-bold text-lg"><span x-text="$store.reviews.average"></span>/5 on Google Maps</span>
             </div>
             <div class="hidden md:block h-8 w-px bg-gray-700"></div>
             <div class="flex items-center gap-8 text-gray-400 text-sm font-semibold uppercase tracking-widest">
@@ -319,6 +320,105 @@
                     <h3 class="text-3xl font-bold text-white mb-2">Unmatched Ambiance</h3>
                     <p class="text-gray-300">Clean, spacious, and packed with the latest equipment.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-24 bg-darker" x-data="{
+        showReviewForm: false,
+        newReview: { name: '', program: '', rating: 5, text: '' },
+        submitReview() {
+            if(this.newReview.name && this.newReview.text) {
+                $store.reviews.addReview({
+                    name: this.newReview.name,
+                    program: this.newReview.program || 'General Fitness',
+                    rating: parseFloat(this.newReview.rating),
+                    text: this.newReview.text,
+                    initial: this.newReview.name.charAt(0).toUpperCase()
+                });
+                this.newReview = { name: '', program: '', rating: 5, text: '' };
+                this.showReviewForm = false;
+            }
+        }
+    }">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16 relative">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Client <span
+                        class="text-primary">Reviews</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-lg mb-8">See what our members have to say about their
+                    transformations.</p>
+                <button @click="showReviewForm = true"
+                    class="bg-primary hover:bg-primaryDark text-white px-6 py-2.5 rounded-full transition-transform transform hover:scale-105 shadow-[0_0_15px_rgba(249,115,22,0.4)]">
+                    <i class="fa-solid fa-pen-to-square mr-2"></i>Write a Review
+                </button>
+            </div>
+
+            <!-- Review Form Modal -->
+            <div x-show="showReviewForm" class="fixed inset-0 z-[100] flex items-center justify-center min-h-screen px-4" x-cloak>
+                <div x-show="showReviewForm" x-transition.opacity @click="showReviewForm = false"
+                    class="fixed inset-0 bg-black/80 backdrop-blur-sm"></div>
+                <div x-show="showReviewForm" x-transition.scale.duration.300ms
+                    class="bg-surface border border-gray-700 w-full max-w-lg rounded-3xl p-8 relative z-10 shadow-2xl">
+                    <button @click="showReviewForm = false"
+                        class="absolute top-4 right-4 text-gray-400 hover:text-white min-h-[44px] min-w-[44px]"><i
+                            class="fa-solid fa-xmark text-2xl"></i></button>
+                    <h3 class="text-2xl font-extrabold text-white mb-6">Write a Review</h3>
+                    <form class="space-y-4" @submit.prevent="submitReview">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-400 mb-2">Your Name</label>
+                            <input type="text" x-model="newReview.name" required
+                                class="w-full bg-darker border border-gray-700 focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-3 text-white outline-none transition-colors"
+                                placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-400 mb-2">Program/Class</label>
+                            <input type="text" x-model="newReview.program"
+                                class="w-full bg-darker border border-gray-700 focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-3 text-white outline-none transition-colors"
+                                placeholder="Weight Training, Zumba, etc.">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-400 mb-2">Rating</label>
+                            <select x-model="newReview.rating"
+                                class="w-full bg-darker border border-gray-700 focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-3 text-white outline-none transition-colors appearance-none">
+                                <option value="5">5 Stars - Excellent</option>
+                                <option value="4">4 Stars - Very Good</option>
+                                <option value="3">3 Stars - Good</option>
+                                <option value="2">2 Stars - Fair</option>
+                                <option value="1">1 Star - Poor</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-400 mb-2">Your Review</label>
+                            <textarea x-model="newReview.text" required rows="4"
+                                class="w-full bg-darker border border-gray-700 focus:border-primary focus:ring-1 focus:ring-primary rounded-xl px-4 py-3 text-white outline-none transition-colors"
+                                placeholder="Tell us about your experience..."></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-primary hover:bg-primaryDark text-white py-3 rounded-xl font-bold min-h-[44px]">Submit Review</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <template x-for="(review, index) in $store.reviews.list" :key="index">
+                    <div class="bg-surface border border-gray-700 rounded-3xl p-8 hover:border-primary/50 transition-colors flex flex-col h-full">
+                        <div class="flex text-yellow-400 mb-4">
+                            <template x-for="i in 5">
+                                <i class="fa-solid" :class="i <= Math.floor(review.rating) ? 'fa-star text-yellow-400' : (i - 0.5 === review.rating ? 'fa-star-half-stroke text-yellow-400' : 'fa-star text-gray-600')"></i>
+                            </template>
+                        </div>
+                        <p class="text-gray-300 mb-6 italic flex-grow" x-text="`&quot;${review.text}&quot;`"></p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center text-xl font-bold text-white uppercase" x-text="review.initial">
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold" x-text="review.name"></h4>
+                                <p class="text-sm text-gray-500" x-text="review.program"></p>
+                            </div>
+                        </div>
+                    </div>
+                </template>
             </div>
         </div>
     </section>
@@ -514,6 +614,50 @@
         </div>
     </div>
 
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('reviews', {
+                list: [
+                    {
+                        name: 'Rahul S.',
+                        program: 'Weight Training',
+                        rating: 5,
+                        text: 'Unique Fitness has completely transformed my lifestyle. The trainers are incredibly knowledgeable and the equipment is top-notch. Highly recommended!',
+                        initial: 'R'
+                    },
+                    {
+                        name: 'Priya M.',
+                        program: 'Zumba Enthusiast',
+                        rating: 5,
+                        text: 'The Zumba classes here are so energetic and fun! It never feels like a workout. The gym is very clean and the staff is extremely friendly.',
+                        initial: 'P'
+                    },
+                    {
+                        name: 'Amit K.',
+                        program: 'Personal Training',
+                        rating: 4,
+                        text: 'I joined for personal training and the results are amazing. My trainer crafted a perfect diet and workout plan. Great atmosphere overall.',
+                        initial: 'A'
+                    },
+                    {
+                        name: 'Sneha R.',
+                        program: 'Yoga & Core',
+                        rating: 5,
+                        text: 'The ambiance is fantastic and the yoga instructors really pay attention to form. Definitely the best gym in Bhubaneswar!',
+                        initial: 'S'
+                    }
+                ],
+                get average() {
+                    if (this.list.length === 0) return 0;
+                    let sum = this.list.reduce((acc, review) => acc + review.rating, 0);
+                    return (sum / this.list.length).toFixed(1);
+                },
+                addReview(review) {
+                    this.list.unshift(review);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
